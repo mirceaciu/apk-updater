@@ -42,11 +42,21 @@ describe('Reader available apk',function(){
 });
 
 describe('Reader last apk',function(){
-	it('should have greater version',function(){
+	  it('should have greater version',function(){
       reader.last('test').version.should.eql(12);
+    });
+
+    it('should have interation version',function(){
+      reader.getNextVersion('test', 8).version.should.eql(12);
     });
 
     it('should ignore unknown apk name',function(){
       should.not.exist(reader.last('unknown'));
     });
+});
+
+describe('Reader get next apk interation',function(){
+  it('should have interation version',function(){
+    reader.getNextVersion('test', 8).version.should.eql(12);
+  });
 });
